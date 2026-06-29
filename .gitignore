@@ -1,0 +1,57 @@
+# Unreal build and intermediate files
+Binaries/
+Build/
+DerivedDataCache/
+Intermediate/
+Saved/
+Build/*/Binaries/
+Build/*/Intermediate/
+DevBuild/
+
+# User specific files
+*.suo
+*.sln
+*.sln.docstates
+*.opensdf
+*.VC.db
+*.VC.opendb
+
+# Generated project files
+*.xcodeproj
+*.xcworkspace
+*.xcconfig
+
+# Visual Studio / Rider / VSCode
+.vs/
+.idea/
+.vscode/
+
+# Unreal-specific generated files
+*.generated.h
+*.generated.cpp
+
+# Build artifacts
+*.pdb
+
+# Backup and local config
+*.local
+*.backup
+*.tmp
+
+# MacOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# Plugins that generate intermediates
+Plugins/*/Binaries/
+Plugins/*/Intermediate/
+Plugins/*/Saved/
+
+# Third party build artifacts
+ThirdParty/**/Binaries/
+ThirdParty/**/Lib/
+
+# Trained neural networks (back up manually)
+*.onnx
