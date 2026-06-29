@@ -14,7 +14,5 @@ class UERULEBASEDAI_API AAIBoxController : public AAIController
 {
 	GENERATED_BODY()
 
-
-	virtual void BeginPlay() override;
-	void TryMove();
+	virtual void OnPossess(APawn* InPawn) override;
 };
