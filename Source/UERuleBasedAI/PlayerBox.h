@@ -30,13 +30,15 @@ private:
 	UPROPERTY(EditAnywhere, Category="Input")
 	class UInputMappingContext* DefaultContext;
 	UPROPERTY(EditAnywhere, Category="Input")
-	class UInputAction* MoveW;
+	class UInputAction* MoveBack;
 	UPROPERTY(EditAnywhere, Category="Input")
-	class UInputAction* MoveS;
+	class UInputAction* MoveForward;
 	UPROPERTY(EditAnywhere, Category="Input")
-	class UInputAction* MoveA;
+	class UInputAction* MoveLeft;
 	UPROPERTY(EditAnywhere, Category="Input")
-	class UInputAction* MoveD;
+	class UInputAction* MoveRight;
+	UPROPERTY(EditAnywhere, Category="Input")
+	class UInputAction* JumpAction;
 
 	void Move(const struct FInputActionValue& Value, FVector WorldDir);
 };

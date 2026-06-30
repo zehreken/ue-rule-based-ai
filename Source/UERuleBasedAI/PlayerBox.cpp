@@ -61,10 +61,12 @@ void APlayerBox::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 	if (UEnhancedInputComponent* EIC = Cast<UEnhancedInputComponent>(PlayerInputComponent))
 	{
-		EIC->BindAction(MoveW, ETriggerEvent::Triggered, this, &APlayerBox::Move, FVector(1, 0, 0));
-		EIC->BindAction(MoveS, ETriggerEvent::Triggered, this, &APlayerBox::Move, FVector(-1, 0, 0));
-		EIC->BindAction(MoveD, ETriggerEvent::Triggered, this, &APlayerBox::Move, FVector(0, 1, 0));
-		EIC->BindAction(MoveA, ETriggerEvent::Triggered, this, &APlayerBox::Move, FVector(0, -1, 0));
+		EIC->BindAction(MoveBack, ETriggerEvent::Triggered, this, &APlayerBox::Move, FVector(-1, 0, 0));
+		EIC->BindAction(MoveForward, ETriggerEvent::Triggered, this, &APlayerBox::Move, FVector(1, 0, 0));
+		EIC->BindAction(MoveRight, ETriggerEvent::Triggered, this, &APlayerBox::Move, FVector(0, 1, 0));
+		EIC->BindAction(MoveLeft, ETriggerEvent::Triggered, this, &APlayerBox::Move, FVector(0, -1, 0));
+		EIC->BindAction(JumpAction, ETriggerEvent::Started, this, &ACharacter::Jump);
+		EIC->BindAction(JumpAction, ETriggerEvent::Completed, this, &ACharacter::StopJumping);
 	}
 }
 
