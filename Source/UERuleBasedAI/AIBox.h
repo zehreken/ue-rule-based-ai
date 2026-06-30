@@ -28,4 +28,13 @@ public:
 
 	UPROPERTY(EditAnywhere, Category="AI")
 	class UBehaviorTree* BehaviorTree;
+
+	UPROPERTY(EditAnywhere)
+	float FollowRange;
+	
+	UPROPERTY(EditAnywhere)
+	float AttackRange;
+	
+	UPROPERTY(EditAnywhere)
+	bool bRetreat;
 };
