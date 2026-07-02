@@ -1,7 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-#include "AIBox.h"
 #include "Spawner.h"
+#include "AIBox.h"
 
 // Sets default values
 ASpawner::ASpawner()
@@ -27,6 +27,8 @@ void ASpawner::Tick(float DeltaTime)
 
 void ASpawner::Spawn()
 {
+	if (!bCanSpawn) return;
+
 	FVector Location = GetActorLocation();
 	AAIBox* Enemy = GetWorld()->SpawnActor<AAIBox>(SpawnClass,
 	                                               FVector(Location.X, Location.Y,

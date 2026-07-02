@@ -6,6 +6,14 @@
 #include "GameFramework/Character.h"
 #include "AIBox.generated.h"
 
+UENUM(BlueprintType)
+enum class ECombatRange : uint8
+{
+	TooClose,
+	InRange,
+	TooFar
+};
+
 UCLASS()
 class UERULEBASEDAI_API AAIBox : public ACharacter
 {
@@ -26,15 +34,12 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
-	UPROPERTY(EditAnywhere, Category="AI")
+	UPROPERTY(EditAnywhere, Category = "AI")
 	class UBehaviorTree* BehaviorTree;
 
-	UPROPERTY(EditAnywhere)
-	float FollowRange;
-	
-	UPROPERTY(EditAnywhere)
-	float AttackRange;
-	
-	UPROPERTY(EditAnywhere)
-	bool bRetreat;
+	UPROPERTY(EditAnywhere, Category = "AI")
+	float ChaseRange;
+
+	UPROPERTY(EditAnywhere, Category = "AI")
+	float RunAwayRange;
 };

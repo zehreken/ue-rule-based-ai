@@ -27,6 +27,9 @@ public:
 
 private:
 	UPROPERTY(EditAnywhere, Category = "Spawn")
+	bool bCanSpawn;
+	
+	UPROPERTY(EditAnywhere, Category = "Spawn")
 	TSubclassOf<AAIBox> SpawnClass;
 
 	UPROPERTY(EditAnywhere, Category = "Spawn")
