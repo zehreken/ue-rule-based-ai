@@ -3,6 +3,8 @@
 
 #include "AIBox.h"
 
+#include "Kismet/GameplayStatics.h"
+
 // Sets default values
 AAIBox::AAIBox()
 {
@@ -23,6 +25,13 @@ void AAIBox::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+}
+
+void AAIBox::Fire()
+{
+	UE_LOG(LogTemp, Display, TEXT("Attack"));
+	APawn* Player = UGameplayStatics::GetPlayerPawn(GetWorld(), 0);
+	if (!Player) return;
 }
 
 // Called to bind functionality to input
