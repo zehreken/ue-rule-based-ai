@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "HitScanAttack.h"
 #include "GameFramework/Character.h"
 #include "PlayerBox.generated.h"
 
@@ -39,6 +40,11 @@ private:
 	class UInputAction* MoveRight;
 	UPROPERTY(EditAnywhere, Category="Input")
 	class UInputAction* JumpAction;
+	UPROPERTY(EditAnywhere, Category="Input")
+	class UInputAction* FireAction;
 
 	void Move(const struct FInputActionValue& Value, FVector WorldDir);
+	void Fire();
+
+	UHitScanAttack* HitScanAttack;
 };

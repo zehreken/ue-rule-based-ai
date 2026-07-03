@@ -29,6 +29,8 @@ void APlayerBox::BeginPlay()
 			Subsys->AddMappingContext(DefaultContext, 0);
 		}
 	}
+
+	HitScanAttack = FindComponentByClass<UHitScanAttack>();
 }
 
 // Called every frame
@@ -67,10 +69,17 @@ void APlayerBox::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent
 		EIC->BindAction(MoveLeft, ETriggerEvent::Triggered, this, &APlayerBox::Move, FVector(0, -1, 0));
 		EIC->BindAction(JumpAction, ETriggerEvent::Started, this, &ACharacter::Jump);
 		EIC->BindAction(JumpAction, ETriggerEvent::Completed, this, &ACharacter::StopJumping);
+		EIC->BindAction(FireAction, ETriggerEvent::Started, this, &APlayerBox::Fire);
 	}
 }
 
 void APlayerBox::Move(const struct FInputActionValue& Value, FVector WorldDir)
 {
 	AddMovementInput(WorldDir, 1.f);
+}
+
+void APlayerBox::Fire()
+{
+	if (HitScanAttack)
+		HitScanAttack->Fire();
 }
