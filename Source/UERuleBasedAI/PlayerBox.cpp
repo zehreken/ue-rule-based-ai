@@ -1,9 +1,11 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "PlayerBox.h"
+#include "Components/CapsuleComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
+#include "OwnController.h"
 
 // Sets default values
 APlayerBox::APlayerBox()
@@ -15,6 +17,8 @@ APlayerBox::APlayerBox()
 	{
 		CM->bOrientRotationToMovement = false;
 	}
+
+	GetCapsuleComponent()->SetCollisionResponseToChannel(ECC_Visibility, ECR_Block);
 }
 
 // Called when the game starts or when spawned
@@ -81,5 +85,11 @@ void APlayerBox::Move(const struct FInputActionValue& Value, FVector WorldDir)
 void APlayerBox::Fire()
 {
 	if (HitScanAttack)
+	{
 		HitScanAttack->Fire();
+		if (AOwnController* OwnController = Cast<AOwnController>(GetController()))
+		{
+			OwnController->GameHUD->SetStatusText(FText::FromString(FString::Printf(TEXT("%.0f/%.0f"), 100.0, 100.0f)));
+		}
+	}
 }

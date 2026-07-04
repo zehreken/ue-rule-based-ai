@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "HitScanAttack.h"
 #include "GameFramework/Character.h"
 #include "AIBox.generated.h"
 
@@ -33,15 +34,23 @@ public:
 
 	void Fire();
 
+	virtual float TakeDamage(float DamageAmount, struct FDamageEvent const& DamageEvent, class AController* EventInstigator, AActor* DamageCauser) override;
+
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
-	UPROPERTY(EditAnywhere, Category = "AI")
+	UPROPERTY(EditAnywhere, Category="AI")
 	class UBehaviorTree* BehaviorTree;
 
-	UPROPERTY(EditAnywhere, Category = "AI")
+	UPROPERTY(EditAnywhere, Category="AI")
 	float ChaseRange;
 
-	UPROPERTY(EditAnywhere, Category = "AI")
+	UPROPERTY(EditAnywhere, Category="AI")
 	float RunAwayRange;
+
+	UPROPERTY(EditAnywhere, Category="AI")
+	float Health = 10.0f;
+
+	UPROPERTY(EditAnywhere, Category="AI")
+	UHitScanAttack* HitScanAttack;
 };

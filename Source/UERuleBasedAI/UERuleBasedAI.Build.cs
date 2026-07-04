@@ -11,7 +11,7 @@ public class UERuleBasedAI : ModuleRules
 		PublicDependencyModuleNames.AddRange(new string[]
 		{
 			"Core", "CoreUObject", "Engine", "InputCore", "AIModule", "NavigationSystem", "GameplayTasks",
-			"EnhancedInput"
+			"EnhancedInput", "UMG", "Slate", "SlateCore"
 		});
 
 		PrivateDependencyModuleNames.AddRange(new string[] { });
