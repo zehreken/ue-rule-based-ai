@@ -77,6 +77,20 @@ void APlayerBox::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent
 	}
 }
 
+float APlayerBox::TakeDamage(float DamageAmount, struct FDamageEvent const& DamageEvent,
+                             class AController* EventInstigator, AActor* DamageCauser)
+{
+	const float Applied = Super::TakeDamage(DamageAmount, DamageEvent, EventInstigator, DamageCauser);
+	Health -= Applied;
+	if (AOwnController* OwnController = Cast<AOwnController>(GetController()))
+	{
+		OwnController->GameHUD->SetStatusText(FText::FromString(FString::Printf(TEXT("%.0f/%.0f"), Health, 100.0f)));
+	}
+	if (Health <= 0.f) Destroy(); // later: a death state / color flash
+	
+	return Applied;
+}
+
 void APlayerBox::Move(const struct FInputActionValue& Value, FVector WorldDir)
 {
 	AddMovementInput(WorldDir, 1.f);
@@ -87,9 +101,5 @@ void APlayerBox::Fire()
 	if (HitScanAttack)
 	{
 		HitScanAttack->Fire();
-		if (AOwnController* OwnController = Cast<AOwnController>(GetController()))
-		{
-			OwnController->GameHUD->SetStatusText(FText::FromString(FString::Printf(TEXT("%.0f/%.0f"), 100.0, 100.0f)));
-		}
 	}
 }

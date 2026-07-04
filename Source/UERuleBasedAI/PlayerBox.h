@@ -27,6 +27,8 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+	virtual float TakeDamage(float DamageAmount, struct FDamageEvent const& DamageEvent, class AController* EventInstigator, AActor* DamageCauser) override;
+
 private:
 	UPROPERTY(EditAnywhere, Category="Input")
 	class UInputMappingContext* DefaultContext;
@@ -47,4 +49,7 @@ private:
 	void Fire();
 
 	UHitScanAttack* HitScanAttack;
+
+	UPROPERTY(EditAnywhere)
+	float Health = 100.0f;
 };
