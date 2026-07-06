@@ -4,6 +4,16 @@
 #include "AIBox.h"
 #include "NavigationSystem.h"
 
+AAIBoxController::AAIBoxController()
+{
+	HTNPlanner = CreateDefaultSubobject<UHTNPlanner>(TEXT("HTNPlanner"));
+}
+
+void AAIBoxController::BeginPlay()
+{
+	Super::BeginPlay();
+}
+
 void AAIBoxController::OnPossess(APawn* InPawn)
 {
 	Super::OnPossess(InPawn);

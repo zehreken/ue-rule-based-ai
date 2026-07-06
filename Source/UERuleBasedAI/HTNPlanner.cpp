@@ -3,6 +3,8 @@
 
 #include "HTNPlanner.h"
 
+#include "AIController.h"
+
 // Sets default values for this component's properties
 UHTNPlanner::UHTNPlanner()
 {
@@ -19,8 +21,16 @@ void UHTNPlanner::BeginPlay()
 {
 	Super::BeginPlay();
 
-	// ...
-	
+	AAIController* OwnerController = Cast<AAIController>(GetOwner());
+	if (OwnerController)
+	{
+		// Cache the blackboard pointer
+		Blackboard = OwnerController->GetBlackboardComponent();
+		if (Blackboard)
+		{
+			UE_LOG(LogTemp, Display, TEXT("Found blackboard component"));
+		}
+	}
 }
 
 
@@ -29,6 +39,7 @@ void UHTNPlanner::TickComponent(float DeltaTime, ELevelTick TickType, FActorComp
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
-	// ...
+	const FName name = FName(TEXT("Distance"));
+	float Distance = Blackboard->GetValueAsFloat(name);
+	UE_LOG(LogTemp, Display, TEXT("%f"), Distance);
 }
-
