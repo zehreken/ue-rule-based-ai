@@ -41,5 +41,4 @@ void UHTNPlanner::TickComponent(float DeltaTime, ELevelTick TickType, FActorComp
 
 	const FName name = FName(TEXT("Distance"));
 	float Distance = Blackboard->GetValueAsFloat(name);
-	UE_LOG(LogTemp, Display, TEXT("%f"), Distance);
 }
