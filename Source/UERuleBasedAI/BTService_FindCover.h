@@ -12,6 +12,12 @@ class UERULEBASEDAI_API UBTService_FindCover : public UBTService
 public:
 	UBTService_FindCover();
 
+	UPROPERTY(EditAnywhere, Category = "Blackboard")
+	FBlackboardKeySelector CoverFoundKey;
+
+	UPROPERTY(EditAnywhere, Category = "Blackboard")
+	FBlackboardKeySelector CoverLocationKey;
+
 protected:
 	virtual void TickNode(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory, float DeltaSeconds) override;
 };
